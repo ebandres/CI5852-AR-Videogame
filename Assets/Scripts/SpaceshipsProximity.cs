@@ -13,6 +13,7 @@ public class SpaceshipsProximity : MonoBehaviour
     // Public variables
     public GameObject spaceship_prefab;
     public float max_distance_limit = 15f;
+    public float spawn_offset = 2f;
     public int spawn_interval = 4;
 
     // Start is called before the first frame update
@@ -33,7 +34,7 @@ public class SpaceshipsProximity : MonoBehaviour
                 if (Vector3.Distance(planet.transform.position, transform.position) <= max_distance_limit) {
                     // The function that "launches" the spaceships gets called repeately within a given time range
                     timePassed += Time.deltaTime;
-                    if(timePassed > Random.Range(spawn_interval-2f, spawn_interval+2f))
+                    if(timePassed > Random.Range(spawn_interval-2f, spawn_interval))
                     {
                         CreateSpaceship(planet);
                         timePassed = 0;
@@ -47,11 +48,11 @@ public class SpaceshipsProximity : MonoBehaviour
     void CreateSpaceship(GameObject planet) {
 
         var spaceship = Instantiate(
-            spaceship_prefab, 
+            spaceship_prefab,
             new Vector3(
-                Random.Range(transform.position.x-1f, transform.position.x+1f),          // We do this to create spaceships in different 
-                Random.Range(transform.position.y-1f, transform.position.y+1f),          // locations on the origin planet
-                Random.Range(transform.position.z-1f, transform.position.z+1f)           // 
+                Random.Range(transform.position.x - spawn_offset, transform.position.x + spawn_offset),          // We do this to create spaceships in different 
+                Random.Range(transform.position.y - spawn_offset, transform.position.y + spawn_offset),          // locations on the origin planet
+                Random.Range(transform.position.z - spawn_offset, transform.position.z + spawn_offset)           // 
             ), 
             Quaternion.LookRotation(planet.transform.position - transform.position)      // Set the rotation towards target planet
         );
