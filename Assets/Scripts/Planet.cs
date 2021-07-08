@@ -6,10 +6,13 @@ public class Planet : MonoBehaviour
 {
     public float rotateSpeed;
     private Vector3 direction;
+    public float minRotateSpeed = 10f;
+    public float maxRotateSpeed = 20f;
+
 
     void Start()
     {
-        rotateSpeed = Random.Range(10f, 20f);
+        rotateSpeed = Random.Range(minRotateSpeed, maxRotateSpeed);
         transform.rotation = Random.rotation;
         direction = Random.insideUnitSphere.normalized;
     }
