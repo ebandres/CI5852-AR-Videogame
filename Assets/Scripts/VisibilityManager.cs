@@ -5,7 +5,6 @@ using UnityEngine;
 public class VisibilityManager : MonoBehaviour
 {   
     //Private variables
-    [ReadOnly] [SerializeField]
     public bool spawned;
 
     // Start is called before the first frame update

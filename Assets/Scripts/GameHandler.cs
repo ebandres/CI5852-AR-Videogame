@@ -5,13 +5,26 @@ using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {   
-    private int currency = 0;
-    private int express_currency = 0;
+    private int carbon = 0;
+    private int iron = 0;
+    private int silver = 0;
+    private int gold = 0;
+    private int diamond = 0;
     private static string SAVE_FOLDER;
 
     // Getters
-    public int GetCurrency() { return currency; }
-    public int GetExpressCurrency() { return express_currency; }
+    public int GetCarbon() { return carbon; }
+    public int GetIron() { return iron; }
+    public int GetSilver() { return silver; }
+    public int GetGold() { return gold; }
+    public int GetDiamond() { return diamond; }
+
+    // Setters
+    public void SetCarbon(int c) { carbon = c; }
+    public void SetIron(int i) { iron = i; }
+    public void SetSilver(int s) { silver = s; }
+    public void SetGold(int g) { gold = g; }
+    public void SetDiamond(int d) { diamond = d; }
 
     // Awake is called when the script instance is being loaded.
     void Awake()
@@ -39,8 +52,11 @@ public class GameHandler : MonoBehaviour
     void Save() {
         //Create SaveObject with game state data
         SaveObject save_object = new SaveObject {
-            currency = currency,
-            express_currency = express_currency
+            carbon = carbon,
+            iron = iron,
+            silver = silver,
+            gold = gold,
+            diamond = diamond
         };
         // From SaveObject to Json
         string json = JsonUtility.ToJson(save_object);
@@ -57,14 +73,20 @@ public class GameHandler : MonoBehaviour
             // From Json to SaveObject
             SaveObject save_object = JsonUtility.FromJson<SaveObject>(save_str);
             // Set game state
-            currency = save_object.currency;
-            express_currency = save_object.express_currency;
+            carbon = save_object.carbon;
+            iron = save_object.iron;
+            silver = save_object.silver;
+            gold = save_object.gold;
+            diamond = save_object.diamond;
         }
     }
 
     // Object that contains saved/loaded data
     private class SaveObject {
-        public int currency;
-        public int express_currency;
+        public int carbon;
+        public int iron;
+        public int silver;
+        public int gold;
+        public int diamond;
     }
 }
