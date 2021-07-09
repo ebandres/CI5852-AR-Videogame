@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {   
+    // Private variables
     private int carbon = 0;
     private int iron = 0;
     private int silver = 0;
     private int gold = 0;
     private int diamond = 0;
     private static string SAVE_FOLDER;
+    // Public variables
+    public float save_every_mins = 1;
 
     // Getters
     public int GetCarbon() { return carbon; }
@@ -36,15 +39,17 @@ public class GameHandler : MonoBehaviour
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
+    void Start() 
     {
-        if (Input.GetKeyDown(KeyCode.S)) {
+        Load();
+        StartCoroutine("SaveCoroutine", save_every_mins);
+    }
+
+    IEnumerator SaveCoroutine(float wait_time) {
+        while(true){
             Save();
-        }
-        if (Input.GetKeyDown(KeyCode.L)) {
-            Load();
+            Debug.Log("Saved");
+            yield return new WaitForSeconds(wait_time*60);
         }
     }
 

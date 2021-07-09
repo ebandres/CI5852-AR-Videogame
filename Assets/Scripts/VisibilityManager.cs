@@ -5,7 +5,7 @@ using UnityEngine;
 public class VisibilityManager : MonoBehaviour
 {   
     //Private variables
-    public bool spawned;
+    private bool spawned;
 
     // Start is called before the first frame update
     void Start() { spawned = false; }

@@ -28,10 +28,12 @@ public class SpaceshipsProximity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        // If planet is spawned in game, calculate distance between it and other planets
+        // If planets are spawned in game, calculate distance between it and other planets
         if (vis_manager.GetSpawned()){
             foreach (var planet in planets as List<GameObject>) {
-                if (Vector3.Distance(planet.transform.position, transform.position) <= max_distance_limit) {
+                // If planet is close and is spawned
+                if ((Vector3.Distance(planet.transform.position, transform.position) <= max_distance_limit) 
+                    && planet.GetComponent<VisibilityManager>().GetSpawned()) {
                     // The function that "launches" the spaceships gets called repeately within a given time range
                     timePassed += Time.deltaTime;
                     if(timePassed > Random.Range(spawn_interval-2f, spawn_interval))
