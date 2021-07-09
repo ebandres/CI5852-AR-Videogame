@@ -37,11 +37,13 @@ public class Planet : MonoBehaviour
     void Update()
     {
         transform.Rotate(direction * rotateSpeed * Time.deltaTime);
+        
         /*
         if (Input.touchCount > 0) {
             Touch touch = Input.GetTouch(0);
             Debug.Log(touch.phase);
         }*/
+
         if (gameObject.tag != "Cloud") {
             // If planet gets despawned and the menu HUD was active, we hide the menu HUD
             if (!vis_manager.GetSpawned() && menu.activeSelf) {
