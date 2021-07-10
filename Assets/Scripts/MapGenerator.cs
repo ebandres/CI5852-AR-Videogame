@@ -21,16 +21,26 @@ public class MapGenerator : MonoBehaviour
     public Vector2 offset;
     private float offsetTargetX;
     private float offsetTargetY;
+    public bool circularMask = false;
     public bool isCloud = false;
     [Range(0f, 0.0001f)]
     public float cloudSpeed = 0.0001f;
 
     public bool autoUpdate;
+    public bool loadFromJson;
+    public TextAsset planetJson;
+    private RegionLevels rl;
 
     public TerrainType[] regions;
 
     private void Start()
     {
+        if (loadFromJson)
+        {
+            rl = JsonUtility.FromJson<RegionLevels>(planetJson.text);
+            regions = rl.levels[0].regions;
+        }
+
         seed = Random.Range(-1000000, 1000000);
         offset.x = Random.Range(-10000f, 10000f);
         offset.y = Random.Range(-10000f, 10000f);
@@ -75,9 +85,16 @@ public class MapGenerator : MonoBehaviour
             {
                 float distance_x = Mathf.Abs(x - halfWidth);
                 float distance_y = Mathf.Abs(y - halfHeight);
-                //float distance = Mathf.Sqrt(distance_x * distance_x + distance_y * distance_y); // circular mask
-                float distance = Mathf.Max(distance_x, distance_y); // square mask
-
+                float distance;
+                if (circularMask)
+                {
+                    distance = Mathf.Sqrt(distance_x * distance_x + distance_y * distance_y); // circular mask
+                }
+                else
+                {
+                    distance = Mathf.Max(distance_x, distance_y); // square mask
+                }
+                    
                 float max_width = size * 0.5f - 10.0f;
                 float delta = distance / max_width;
                 float gradient = delta * delta;
@@ -126,6 +143,14 @@ public class MapGenerator : MonoBehaviour
             octaves = 0;
         }
     }
+
+    void changePlanetLevel(int currentLevel)
+    {
+        if (currentLevel + 1 < rl.levels.Length)
+        {
+            regions = rl.levels[currentLevel + 1].regions;
+        }
+    }
 }
 
 [System.Serializable]
@@ -134,4 +159,16 @@ public struct TerrainType
     public string name;
     public float height;
     public Color colour;
+}
+
+[System.Serializable]
+public struct Regions
+{
+    public TerrainType[] regions;
+}
+
+[System.Serializable]
+public struct RegionLevels
+{
+    public Regions[] levels;
 }
