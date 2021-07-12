@@ -15,6 +15,7 @@ public class CarbonGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    	Debug.Log("WTF MAN");
         UI_carbon_value = GameObject.Find("Value Carbono " + gameObject.name).GetComponent<Text>();
         StartCoroutine("CarbonCoroutine");
     }
