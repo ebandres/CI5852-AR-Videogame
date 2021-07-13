@@ -19,21 +19,14 @@ public class ResourceGenerator : MonoBehaviour
     public double silver_prob = 0.85;
     public double gold_prob = 0.95;
     public double diamond_prob = 1;
-
-    // Private variables
-    private Text UI_coal_value;
-    private Text UI_iron_value;
-    private Text UI_silver_value;
-    private Text UI_gold_value;
-    private Text UI_diamond_value;
+    public Text UI_coal_value;
+    public Text UI_iron_value;
+    public Text UI_silver_value;
+    public Text UI_gold_value;
+    public Text UI_diamond_value;
 
     void Start()
     {
-        UI_coal_value = GameObject.Find("Value Carbono " + gameObject.name).GetComponent<Text>();
-        UI_iron_value = GameObject.Find("Value Hierro " + gameObject.name).GetComponent<Text>();
-        UI_silver_value = GameObject.Find("Value Plata " + gameObject.name).GetComponent<Text>();
-        UI_gold_value = GameObject.Find("Value Oro " + gameObject.name).GetComponent<Text>();
-        UI_diamond_value = GameObject.Find("Value Diamante " + gameObject.name).GetComponent<Text>();
         StartCoroutine("ResourceCoroutine");
     }
 
