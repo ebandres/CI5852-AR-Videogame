@@ -34,26 +34,20 @@ public class ResourceGenerator : MonoBehaviour
     IEnumerator ResourceCoroutine() {
     	while (true){
     		double resource = new System.Random().NextDouble();
-            Debug.Log(resource);
             if (nothing_prob < resource){
                 if (resource <= coal_prob){
-                    Debug.Log(gameObject.name + " CARBON");
                     coal += 1;
                     UI_coal_value.text = coal.ToString();
                 } else if (resource <= iron_prob){
-                    Debug.Log(gameObject.name + " HIERRO");
                     iron += 1;
                     UI_iron_value.text = iron.ToString();
                 } else if (resource <= silver_prob){
-                    Debug.Log(gameObject.name + " PLATA");
                     silver += 1;
                     UI_silver_value.text = silver.ToString();
                 } else if (resource <= gold_prob){
-                    Debug.Log(gameObject.name + " ORO");
                     gold += 1;
                     UI_gold_value.text = gold.ToString();
                 } else if (resource <= diamond_prob){
-                    Debug.Log(gameObject.name + " DIAMANTE");
                     diamond += 1;
                     UI_diamond_value.text = diamond.ToString();
                 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Planet : MonoBehaviour
 {   
@@ -11,7 +12,6 @@ public class Planet : MonoBehaviour
     // Private variables
     private GameObject menu;
     private Vector3 direction;
-    private bool active = false;
     private VisibilityManager vis_manager;
 
     void Start()
@@ -30,7 +30,7 @@ public class Planet : MonoBehaviour
             vis_manager = GetComponent<VisibilityManager>();
         }
         // Hide menu HUD when starting game
-        menu.SetActive(active);
+        menu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,24 +38,39 @@ public class Planet : MonoBehaviour
     {
         transform.Rotate(direction * rotateSpeed * Time.deltaTime);
         
-        /*
-        if (Input.touchCount > 0) {
-            Touch touch = Input.GetTouch(0);
-            Debug.Log(touch.phase);
-        }*/
+        // When a click is made on screen, we cast a ray from the camera to the direction of the click
+        if (Input.GetMouseButtonDown(0)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            // If the ray hit the GameObject Planet that has this script attached, we show its menu
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.name == gameObject.transform.name)
+                {
+                    menu.SetActive(true);
+                }
+            }
+            // If the ray didn't hit any GameObject, and the pointer isn't on any UI element, we hide the menu
+            else if (!IsPointerOverUIObject()) {
+                menu.SetActive(false);
+            }
+        }
 
         if (gameObject.tag != "Cloud") {
-            // If planet gets despawned and the menu HUD was active, we hide the menu HUD
+            // If planet gets despawned and the menu was active, we hide its menu
             if (!vis_manager.GetSpawned() && menu.activeSelf) {
-                active = false;
-                menu.SetActive(active);
+                menu.SetActive(false);
             }
         }
     }
 
-    // IMPORTANT: We are using this to test on PC, on mobile we use Touch Controls
-    void OnMouseDown() {
-        active = !active;
-        menu.SetActive(active);
+    // Cast a ray to test if Input.mousePosition is over any UI object in EventSystem.current
+    private bool IsPointerOverUIObject() {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+    
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 }
