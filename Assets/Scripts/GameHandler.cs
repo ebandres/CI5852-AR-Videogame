@@ -2,9 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameHandler : MonoBehaviour
 {   
+    // Public variables
+    public float save_every_mins = 1;
+    public Text UI_carbon_value;
+    public Text UI_iron_value;
+    public Text UI_silver_value;
+    public Text UI_gold_value;
+    public Text UI_diamond_value;
     // Private variables
     private int carbon = 0;
     private int iron = 0;
@@ -12,8 +20,6 @@ public class GameHandler : MonoBehaviour
     private int gold = 0;
     private int diamond = 0;
     private static string SAVE_FOLDER;
-    // Public variables
-    public float save_every_mins = 1;
 
     // Getters
     public int GetCarbon() { return carbon; }
@@ -23,11 +29,11 @@ public class GameHandler : MonoBehaviour
     public int GetDiamond() { return diamond; }
 
     // Setters
-    public void SetCarbon(int c) { carbon = c; }
-    public void SetIron(int i) { iron = i; }
-    public void SetSilver(int s) { silver = s; }
-    public void SetGold(int g) { gold = g; }
-    public void SetDiamond(int d) { diamond = d; }
+    public void SetCarbon(int c) { carbon = c; UI_carbon_value.text = carbon.ToString(); }
+    public void SetIron(int i) { iron = i; UI_iron_value.text = iron.ToString(); }
+    public void SetSilver(int s) { silver = s; UI_silver_value.text = silver.ToString(); }
+    public void SetGold(int g) { gold = g; UI_gold_value.text = gold.ToString(); }
+    public void SetDiamond(int d) { diamond = d; UI_diamond_value.text = diamond.ToString(); }
 
     // Awake is called when the script instance is being loaded.
     void Awake()
