@@ -19,7 +19,6 @@ public class GameHandler : MonoBehaviour
     private int silver = 0;
     private int gold = 0;
     private int diamond = 0;
-    private static string SAVE_FOLDER;
 
     // Getters
     public int GetCarbon() { return carbon; }
@@ -34,16 +33,6 @@ public class GameHandler : MonoBehaviour
     public void SetSilver(int s) { silver = s; UI_silver_value.text = silver.ToString(); }
     public void SetGold(int g) { gold = g; UI_gold_value.text = gold.ToString(); }
     public void SetDiamond(int d) { diamond = d; UI_diamond_value.text = diamond.ToString(); }
-
-    // Awake is called when the script instance is being loaded.
-    void Awake()
-    {   
-        // We check if Saves folder exists, if not then it gets created
-        SAVE_FOLDER = Application.dataPath + "/Saves/";
-        if (!Directory.Exists(SAVE_FOLDER)) {
-            Directory.CreateDirectory(SAVE_FOLDER);
-        }
-    }
 
     // Start is called before the first frame update
     void Start() 
@@ -73,15 +62,15 @@ public class GameHandler : MonoBehaviour
         // From SaveObject to Json
         string json = JsonUtility.ToJson(save_object);
         // Write to Json File
-        File.WriteAllText(SAVE_FOLDER + "save.json", json);
+        File.WriteAllText(Application.persistentDataPath + "/save.json", json);
     }
 
     // Function used to load the game state
     void Load() {
 
-        if (File.Exists(SAVE_FOLDER + "save.json")) {
+        if (File.Exists(Application.persistentDataPath + "/save.json")) {
             // Read from Json file
-            string save_str = File.ReadAllText(SAVE_FOLDER + "save.json");
+            string save_str = File.ReadAllText(Application.persistentDataPath + "/save.json");
             // From Json to SaveObject
             SaveObject save_object = JsonUtility.FromJson<SaveObject>(save_str);
             // Set game state
