@@ -165,7 +165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 41268834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610ab97abe0a10d4e9b3adb3ea95ef4b, type: 3}
+  m_Script: {fileID: 11500000, guid: e9f4fdee384903e49b25c17470384653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 0
@@ -393,9 +393,12 @@ MonoBehaviour:
   seed: 24
   size: 128
   offset: {x: 0, y: 0}
+  circularMask: 0
   isCloud: 1
   cloudSpeed: 0.000052
   autoUpdate: 1
+  loadFromJson: 0
+  planetJson: {fileID: 0}
   regions:
   - name: 
     height: 0

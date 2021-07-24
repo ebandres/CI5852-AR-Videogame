@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradesManager : MonoBehaviour
 {
+    // Private variables
     private int carbon_lvl = 1;
     private int iron_lvl = 1;
     private int silver_lvl = 1;
@@ -14,11 +16,65 @@ public class UpgradesManager : MonoBehaviour
     private Dictionary<int, ResourcesRequired> silver_lvlup_requirements;
     private Dictionary<int, ResourcesRequired> gold_lvlup_requirements;
     private Dictionary<int, ResourcesRequired> diamond_lvlup_requirements;
+    private ResourceGenerator resource_generator;
+    // Public variables
+    public Text UI_carbon_lvl_value;
+    public Text UI_iron_lvl_value;
+    public Text UI_silver_lvl_value;
+    public Text UI_gold_lvl_value;
+    public Text UI_diamond_lvl_value;
 
+    // Getters
+    public int GetCarbonLvl() { return carbon_lvl; }
+    public int GetIronLvl() { return iron_lvl; }
+    public int GetSilverLvl() { return silver_lvl; }
+    public int GetGoldLvl() { return gold_lvl; }
+    public int GetDiamondLvl() { return diamond_lvl; }
+
+    // Setters
+    public void SetCarbonLvl(int c) { 
+        carbon_lvl = c;
+        resource_generator.SetCarbonGenLimiter(carbon_lvl);
+        resource_generator.carbon_prob += (double)(0.75-0.30)/4; // 0.1125
+        UI_carbon_lvl_value.text = carbon_lvl.ToString();
+    }
+    public void SetIronLvl(int i) { 
+        iron_lvl = i; 
+        resource_generator.SetIronGenLimiter(iron_lvl);
+        resource_generator.iron_prob += (double)(0.50-0.20)/4; // 0.075
+        UI_iron_lvl_value.text = iron_lvl.ToString();
+    }
+    public void SetSilverLvl(int s) { 
+        silver_lvl = s; 
+        resource_generator.SetSilverGenLimiter(silver_lvl);
+        resource_generator.silver_prob += (double)(0.37-0.12)/4; // 0.063
+        UI_silver_lvl_value.text = silver_lvl.ToString();
+    }
+    public void SetGoldLvl(int g) { 
+        gold_lvl = g; 
+        resource_generator.SetGoldGenLimiter(gold_lvl);
+        resource_generator.gold_prob += (double)(0.25-0.10)/4; // 0.0376
+        UI_gold_lvl_value.text = gold_lvl.ToString();
+    }
+    public void SetDiamondLvl(int d) { 
+        diamond_lvl = d; 
+        resource_generator.SetDiamondGenLimiter(diamond_lvl);
+        resource_generator.diamond_prob += (double)(0.12-0.05)/4; // 0.018
+        UI_diamond_lvl_value.text = diamond_lvl.ToString();
+    }
+
+    // Resources required getters
+    public ResourcesRequired GetResourcesRequiredCarbon() { return carbon_lvlup_requirements[carbon_lvl+1]; }
+    public ResourcesRequired GetResourcesRequiredIron() { return iron_lvlup_requirements[iron_lvl+1]; }
+    public ResourcesRequired GetResourcesRequiredSilver() { return silver_lvlup_requirements[silver_lvl+1]; }
+    public ResourcesRequired GetResourcesRequiredGold() { return gold_lvlup_requirements[gold_lvl+1]; }
+    public ResourcesRequired GetResourcesRequiredDiamond() { return diamond_lvlup_requirements[diamond_lvl+1]; }
 
     // Start is called before the first frame update
     void Start()
     {
+        resource_generator = gameObject.GetComponent<ResourceGenerator>();
+
         carbon_lvlup_requirements = new Dictionary<int, ResourcesRequired>()
         {
             {2 , new ResourcesRequired {
@@ -82,23 +138,6 @@ public class UpgradesManager : MonoBehaviour
                 diamond = 30
             }}
         };
-    }
-
-    // Resources required getters
-    public ResourcesRequired GetResourcesRequiredCarbon() {
-        return carbon_lvlup_requirements[carbon_lvl+1];
-    }
-    public ResourcesRequired GetResourcesRequiredIron() {
-        return iron_lvlup_requirements[iron_lvl+1];
-    }
-    public ResourcesRequired GetResourcesRequiredSilver() {
-        return silver_lvlup_requirements[silver_lvl+1];
-    }
-    public ResourcesRequired GetResourcesRequiredGold() {
-        return gold_lvlup_requirements[gold_lvl+1];
-    }
-    public ResourcesRequired GetResourcesRequiredDiamond() {
-        return diamond_lvlup_requirements[diamond_lvl+1];
     }
 
     // Object that contains the resources required to upgrade something

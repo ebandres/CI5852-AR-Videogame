@@ -43,14 +43,14 @@ public class GameHandler : MonoBehaviour
 
     IEnumerator SaveCoroutine(float wait_time) {
         while(true){
+            yield return new WaitForSeconds(wait_time*60);
             Save();
             Debug.Log("Saved");
-            yield return new WaitForSeconds(wait_time*60);
         }
     }
 
     // Function used to save the game state
-    void Save() {
+    public void Save() {
         //Create SaveObject with game state data
         SaveObject save_object = new SaveObject {
             carbon = carbon,
@@ -74,11 +74,11 @@ public class GameHandler : MonoBehaviour
             // From Json to SaveObject
             SaveObject save_object = JsonUtility.FromJson<SaveObject>(save_str);
             // Set game state
-            carbon = save_object.carbon;
-            iron = save_object.iron;
-            silver = save_object.silver;
-            gold = save_object.gold;
-            diamond = save_object.diamond;
+            SetCarbon(save_object.carbon);
+            SetIron(save_object.iron);
+            SetSilver(save_object.silver);
+            SetGold(save_object.gold);
+            SetDiamond(save_object.diamond);
         }
     }
 
