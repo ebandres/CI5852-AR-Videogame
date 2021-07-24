@@ -28,19 +28,11 @@ public class MapGenerator : MonoBehaviour
 
     public bool autoUpdate;
     public bool loadFromJson;
-    public TextAsset planetJson;
-    private RegionLevels rl;
 
     public TerrainType[] regions;
 
     private void Start()
     {
-        if (loadFromJson)
-        {
-            rl = JsonUtility.FromJson<RegionLevels>(planetJson.text);
-            regions = rl.levels[0].regions;
-        }
-
         seed = Random.Range(-1000000, 1000000);
         offset.x = Random.Range(-10000f, 10000f);
         offset.y = Random.Range(-10000f, 10000f);
@@ -141,14 +133,6 @@ public class MapGenerator : MonoBehaviour
         if (octaves < 0)
         {
             octaves = 0;
-        }
-    }
-
-    void changePlanetLevel(int currentLevel)
-    {
-        if (currentLevel + 1 < rl.levels.Length)
-        {
-            regions = rl.levels[currentLevel + 1].regions;
         }
     }
 }
