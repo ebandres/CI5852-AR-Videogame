@@ -28,8 +28,8 @@ public class DisasterGenerator : MonoBehaviour
 	};
 
 	string[] regularDisasters = {
-		"Terremoto",
-		"Tsunami",
+		"Ha ocurrido un terremoto",
+		"Ha ocurrido un Tsunami",
 		"Temprada de huracanes",
 		"El emperador Zurg I ataca el planeta",
 		"Una pandemia ataca a la población. Quédate en casa",
@@ -45,7 +45,7 @@ public class DisasterGenerator : MonoBehaviour
 	};
 
 	string[] aniquiladores = {
-		"Thanos ha reunido las gemas del infinito. La población se reduce a la mitad",
+		"Thanos ha reunido las gemas del infinito",
 		"El emperador Palpatine le ha declarado guerra a tu galaxia",
 		"Un gran astedoride choca con el planeta",
 		"Guerra mundial",
@@ -109,8 +109,110 @@ public class DisasterGenerator : MonoBehaviour
     }
 
     void createRegularDisaster(string message){
-    	
+		double downgrade;
+    	int r_effect, p_effect, resource;
+    	Random effectRnd = new System.Random();
+    	Random resourceRnd = new System.Random();
+    	ResourceGenerator generator = gameObject.GetComponent<ResourceGenerator>();
+		HumanityManager population_generator = gameObject.GetComponent<HumanityManager>();
+    	string consequence1, consequence2;
+
+		//First we calculate the effects on the population
+		p_effect = effectRnd.Next(1, 21);
+		r_effect = effectRnd.Next(1, 4);
+		downgrade = r_effect / 100.0;
+    	resource = resourceRnd.Next(5);
+		consequence1 = "La población se reduce en " + p_effect.ToString() + "%\n";
+
+		switch(resource){
+    		case 0:
+    			generator.downgradeCarbon(downgrade);
+    			consequence2 = consequence1 + "Disminuye la extracción de carbón";
+    			break;
+    		case 1:
+    			generator.downgradeIron(downgrade);
+    			consequence2 = consequence1 + "Disminuye la extracción de hierro";
+    			break;
+    		case 2:
+    			generator.downgradeSilver(downgrade);
+    			consequence2 = consequence1 + "Disminuye la extracción de plata";
+    			break;
+    		case 3:
+    			generator.downgradeGold(downgrade);
+    			consequence2 = consequence1 + "Disminuye la extracción de carbón";
+    			break;
+    		case 4:
+    			generator.downgradeDiamond(downgrade);
+    			consequence2 = consequence1 + "Disminuye la generación de diamante";
+    			break;
+    		default:
+    		    consequence2 = consequence1 + "Sin daños materiales";
+    			break;
+
+    	}
+
+    	UI_disaster_message.text = message;
+    	UI_disaster_consequence.text = consequence2;
+
     }
+
+	void createAniquilador(string message){
+		double downgrade;
+    	int r_effect, p_effect, resource;
+    	Random effectRnd = new System.Random();
+    	Random resourceRnd = new System.Random();
+    	ResourceGenerator generator = gameObject.GetComponent<ResourceGenerator>();
+		HumanityManager population_generator = gameObject.GetComponent<HumanityManager>();
+    	string consequence1;
+
+		string[] rconsequence = new string[2];
+
+		//First we calculate the effects on the population
+		if (message.Contains("Thanos")){
+			p_effect = 50;
+		} else {
+			p_effect = effectRnd.Next(20, 46);
+		}
+
+		consequence1 = "La población se reduce en " + p_effect.ToString() + "por ciento\n";
+
+		for(int i = 0; i < 2; i++){
+			r_effect = effectRnd.Next(1, 4);
+			downgrade = r_effect / 100.0;
+			resource = resourceRnd.Next(5);
+
+			switch(resource){
+				case 0:
+					generator.downgradeCarbon(downgrade);
+					rconsequence[i] = "Disminuye la extracción de carbón\n";
+					break;
+				case 1:
+					generator.downgradeIron(downgrade);
+					rconsequence[i] = "Disminuye la extracción de hierro\n";
+					break;
+				case 2:
+					generator.downgradeSilver(downgrade);
+					rconsequence[i] = consequence1 + "Disminuye la extracción de plata\n";
+					break;
+				case 3:
+					generator.downgradeGold(downgrade);
+					rconsequence[i] = consequence1 + "Disminuye la extracción de carbón\n";
+					break;
+				case 4:
+					generator.downgradeDiamond(downgrade);
+					rconsequence[i] = "Disminuye la extracción de diamante\n";
+					break;
+				default:
+					rconsequence[i] = "Sin daños materiales\n";
+					break;
+
+			}
+		}
+
+    	UI_disaster_message.text = message;
+    	UI_disaster_consequence.text = consequence1 + rconsequence[0] + rconsequence[1];
+
+	}
 
     void Start()
     {
@@ -152,6 +254,7 @@ public class DisasterGenerator : MonoBehaviour
     			index = disasterInstRnd.Next(length(aniquiladores));
     			createAniquilador(aniquiladores[index])
     			aniquiladoresHabilitated = false;
+				regularCounter = 0;
     		}*/
 
     		if (setbacksCounter == 2){

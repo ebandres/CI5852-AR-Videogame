@@ -22,6 +22,19 @@ public class HumanityManager : MonoBehaviour
     public void SetHumanity(int h) { humans = h; UI_humanity_value.text = humans.ToString(); }
     public void SetHumanityLimit(int h) { humans_limit = h; }
 
+    void HumanFixedChange(int delta){
+        if (humans + delta >= 0){
+            humans = humans + delta;
+        } else {
+            humans = 0;
+        }
+    }
+
+    void HumanPercentageChange(int percentage){
+        HumanFixedChange(System.Convert.ToInt32(humans * percentage / 100));
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,4 +55,5 @@ public class HumanityManager : MonoBehaviour
             yield return new WaitForSeconds(time);
         }
     }
+
 }
