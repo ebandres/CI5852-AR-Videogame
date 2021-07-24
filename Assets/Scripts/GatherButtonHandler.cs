@@ -6,6 +6,7 @@ public class GatherButtonHandler : MonoBehaviour
 {
     public GameObject planet;
     private GameObject gh;
+
     void Start()
     {
         gh = GameObject.Find("Game Handler");
