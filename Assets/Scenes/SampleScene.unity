@@ -1216,7 +1216,6 @@ GameObject:
   - component: {fileID: 228634003}
   - component: {fileID: 228634002}
   - component: {fileID: 228634001}
-  - component: {fileID: 228634000}
   m_Layer: 0
   m_Name: Level Up Silver Button
   m_TagString: Untagged
@@ -1244,20 +1243,6 @@ RectTransform:
   m_AnchoredPosition: {x: 36.5, y: -7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &228634000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228633998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77f2b12c5a3df8438aafb43a60cb6de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade_menu: {fileID: 0}
-  main_menu: {fileID: 1197158385}
 --- !u!114 &228634001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1301,7 +1286,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 228634000}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowMainMenu
         m_Mode: 1
         m_Arguments:
@@ -1798,7 +1783,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 1000000000
+  m_Text: 1000
 --- !u!222 &272705088
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2737,6 +2722,7 @@ GameObject:
   - component: {fileID: 661529650}
   - component: {fileID: 661529655}
   - component: {fileID: 661529658}
+  - component: {fileID: 661529659}
   - component: {fileID: 661529656}
   - component: {fileID: 661529657}
   m_Layer: 0
@@ -2878,11 +2864,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 2
   nothing_prob: 0.23
-  carbon_prob: 0.53
-  iron_prob: 0.73
-  silver_prob: 0.85
-  gold_prob: 0.95
-  diamond_prob: 1
+  carbon_prob: 0.3
+  iron_prob: 0.2
+  silver_prob: 0.15
+  gold_prob: 0.1
+  diamond_prob: 0.05
   UI_carbon_value: {fileID: 1047025954}
   UI_iron_value: {fileID: 125293397}
   UI_silver_value: {fileID: 834957910}
@@ -2904,6 +2890,23 @@ MonoBehaviour:
   nothing_prob: 0.23
   humans_prob: 0.5
   UI_humanity_value: {fileID: 272705087}
+--- !u!114 &661529659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661529649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c95973aef953749a3f6943e2480f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_carbon_lvl_value: {fileID: 630305604}
+  UI_iron_lvl_value: {fileID: 1037666472}
+  UI_silver_lvl_value: {fileID: 1584900484}
+  UI_gold_lvl_value: {fileID: 1003266231}
+  UI_diamond_lvl_value: {fileID: 2112604143}
 --- !u!1 &671175003
 GameObject:
   m_ObjectHideFlags: 0
@@ -3626,7 +3629,6 @@ GameObject:
   - component: {fileID: 758940459}
   - component: {fileID: 758940458}
   - component: {fileID: 758940457}
-  - component: {fileID: 758940456}
   m_Layer: 0
   m_Name: Level Up Gold Button
   m_TagString: Untagged
@@ -3654,20 +3656,6 @@ RectTransform:
   m_AnchoredPosition: {x: 36.5, y: -21}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &758940456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 758940454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77f2b12c5a3df8438aafb43a60cb6de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade_menu: {fileID: 0}
-  main_menu: {fileID: 1197158385}
 --- !u!114 &758940457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3711,7 +3699,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 758940456}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowMainMenu
         m_Mode: 1
         m_Arguments:
@@ -4354,7 +4342,7 @@ GameObject:
   - component: {fileID: 994378050}
   - component: {fileID: 994378049}
   - component: {fileID: 994378048}
-  - component: {fileID: 994378047}
+  - component: {fileID: 994378051}
   m_Layer: 0
   m_Name: Level Up Carbon Button
   m_TagString: Untagged
@@ -4382,20 +4370,6 @@ RectTransform:
   m_AnchoredPosition: {x: 36.5, y: 21}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &994378047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994378045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77f2b12c5a3df8438aafb43a60cb6de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade_menu: {fileID: 0}
-  main_menu: {fileID: 1197158385}
 --- !u!114 &994378048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4439,8 +4413,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 994378047}
-        m_MethodName: ShowMainMenu
+      - m_Target: {fileID: 994378051}
+        m_MethodName: LvlUpCarbonGeneratorButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4487,6 +4461,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994378045}
   m_CullTransparentMesh: 0
+--- !u!114 &994378051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994378045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8e2f1916e0e2c4db34dc72e9b11e3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Planet: {fileID: 1038162901}
 --- !u!1 &1003266229
 GameObject:
   m_ObjectHideFlags: 0
@@ -4784,7 +4771,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1231808760}
+  - {fileID: 1630868110}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5064,6 +5051,7 @@ GameObject:
   - component: {fileID: 1038162902}
   - component: {fileID: 1038162904}
   - component: {fileID: 1038162909}
+  - component: {fileID: 1038162911}
   - component: {fileID: 1038162903}
   - component: {fileID: 1038162907}
   - component: {fileID: 1038162908}
@@ -5224,16 +5212,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 2
   nothing_prob: 0.23
-  carbon_prob: 0.53
-  iron_prob: 0.73
-  silver_prob: 0.85
-  gold_prob: 0.95
-  diamond_prob: 1
+  carbon_prob: 0.3
+  iron_prob: 0.2
+  silver_prob: 0.12
+  gold_prob: 0.1
+  diamond_prob: 0.05
   UI_carbon_value: {fileID: 1931771357}
   UI_iron_value: {fileID: 331060080}
   UI_silver_value: {fileID: 2053765824}
   UI_gold_value: {fileID: 1352461064}
   UI_diamond_value: {fileID: 1539576712}
+--- !u!114 &1038162911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038162901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c95973aef953749a3f6943e2480f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI_carbon_lvl_value: {fileID: 418545371}
+  UI_iron_lvl_value: {fileID: 1801218756}
+  UI_silver_lvl_value: {fileID: 743445032}
+  UI_gold_lvl_value: {fileID: 1119417355}
+  UI_diamond_lvl_value: {fileID: 1689956476}
 --- !u!1 &1047025952
 GameObject:
   m_ObjectHideFlags: 0
@@ -5634,7 +5639,6 @@ GameObject:
   - component: {fileID: 1137087083}
   - component: {fileID: 1137087082}
   - component: {fileID: 1137087081}
-  - component: {fileID: 1137087080}
   m_Layer: 0
   m_Name: Level Up Diamond Button
   m_TagString: Untagged
@@ -5662,20 +5666,6 @@ RectTransform:
   m_AnchoredPosition: {x: 36.5, y: -35}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1137087080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137087078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77f2b12c5a3df8438aafb43a60cb6de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade_menu: {fileID: 0}
-  main_menu: {fileID: 1197158385}
 --- !u!114 &1137087081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5719,7 +5709,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1137087080}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowMainMenu
         m_Mode: 1
         m_Arguments:
@@ -6082,34 +6072,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214353946}
   m_CullTransparentMesh: 0
---- !u!21 &1231808760
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'rMaterial
-
-    14366'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: acc9dfcc6a7f467ab525064cfa17e1b7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1276706478
 GameObject:
   m_ObjectHideFlags: 0
@@ -6345,7 +6307,6 @@ GameObject:
   - component: {fileID: 1302622680}
   - component: {fileID: 1302622679}
   - component: {fileID: 1302622678}
-  - component: {fileID: 1302622677}
   m_Layer: 0
   m_Name: Level Up Iron Button
   m_TagString: Untagged
@@ -6373,20 +6334,6 @@ RectTransform:
   m_AnchoredPosition: {x: 36.5, y: 7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1302622677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302622675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77f2b12c5a3df8438aafb43a60cb6de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade_menu: {fileID: 0}
-  main_menu: {fileID: 1197158385}
 --- !u!114 &1302622678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6430,7 +6377,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1302622677}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowMainMenu
         m_Mode: 1
         m_Arguments:
@@ -6804,7 +6751,6 @@ GameObject:
   - component: {fileID: 1362883495}
   - component: {fileID: 1362883494}
   - component: {fileID: 1362883493}
-  - component: {fileID: 1362883492}
   m_Layer: 0
   m_Name: Level Up Diamond Button
   m_TagString: Untagged
@@ -6832,20 +6778,6 @@ RectTransform:
   m_AnchoredPosition: {x: 36.5, y: -35}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1362883492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362883490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77f2b12c5a3df8438aafb43a60cb6de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade_menu: {fileID: 0}
-  main_menu: {fileID: 1197158385}
 --- !u!114 &1362883493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6889,7 +6821,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1362883492}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowMainMenu
         m_Mode: 1
         m_Arguments:
@@ -7845,7 +7777,6 @@ GameObject:
   - component: {fileID: 1594894270}
   - component: {fileID: 1594894269}
   - component: {fileID: 1594894268}
-  - component: {fileID: 1594894267}
   m_Layer: 0
   m_Name: Level Up Gold Button
   m_TagString: Untagged
@@ -7873,20 +7804,6 @@ RectTransform:
   m_AnchoredPosition: {x: 36.5, y: -21}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1594894267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1594894265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77f2b12c5a3df8438aafb43a60cb6de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade_menu: {fileID: 0}
-  main_menu: {fileID: 1197158385}
 --- !u!114 &1594894268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7930,7 +7847,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1594894267}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowMainMenu
         m_Mode: 1
         m_Arguments:
@@ -8073,6 +7990,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1630868110
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'rMaterial
+
+    14536'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: acc9dfcc6a7f467ab525064cfa17e1b7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1635946969
 GameObject:
   m_ObjectHideFlags: 0
@@ -8712,7 +8657,6 @@ GameObject:
   - component: {fileID: 1799381119}
   - component: {fileID: 1799381118}
   - component: {fileID: 1799381117}
-  - component: {fileID: 1799381116}
   m_Layer: 0
   m_Name: Level Up Iron Button
   m_TagString: Untagged
@@ -8740,20 +8684,6 @@ RectTransform:
   m_AnchoredPosition: {x: 36.5, y: 7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1799381116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799381114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77f2b12c5a3df8438aafb43a60cb6de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade_menu: {fileID: 0}
-  main_menu: {fileID: 1197158385}
 --- !u!114 &1799381117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8797,7 +8727,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1799381116}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowMainMenu
         m_Mode: 1
         m_Arguments:
@@ -8923,6 +8853,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801218754}
   m_CullTransparentMesh: 0
+--- !u!21 &1806806174
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'r2Material
+
+    15024'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 8450075ae28342ad9f7b5914b3c488a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1807619169
 GameObject:
   m_ObjectHideFlags: 0
@@ -9731,7 +9689,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2057238402}
+  - {fileID: 1806806174}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10038,7 +9996,6 @@ GameObject:
   - component: {fileID: 2011903738}
   - component: {fileID: 2011903737}
   - component: {fileID: 2011903736}
-  - component: {fileID: 2011903735}
   m_Layer: 0
   m_Name: Level Up Silver Button
   m_TagString: Untagged
@@ -10066,20 +10023,6 @@ RectTransform:
   m_AnchoredPosition: {x: 36.5, y: -7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2011903735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011903733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77f2b12c5a3df8438aafb43a60cb6de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade_menu: {fileID: 0}
-  main_menu: {fileID: 1197158385}
 --- !u!114 &2011903736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10123,7 +10066,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2011903735}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowMainMenu
         m_Mode: 1
         m_Arguments:
@@ -10220,11 +10163,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2021735013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77f2b12c5a3df8438aafb43a60cb6de, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b8e2f1916e0e2c4db34dc72e9b11e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgrade_menu: {fileID: 0}
-  main_menu: {fileID: 1197158385}
+  Planet: {fileID: 661529649}
 --- !u!114 &2021735016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10269,7 +10211,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2021735015}
-        m_MethodName: ShowMainMenu
+        m_MethodName: LvlUpCarbonGeneratorButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10596,34 +10538,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053765822}
   m_CullTransparentMesh: 0
---- !u!21 &2057238402
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'r2Material
-
-    14634'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 8450075ae28342ad9f7b5914b3c488a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &2073078627
 GameObject:
   m_ObjectHideFlags: 0
