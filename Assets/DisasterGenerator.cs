@@ -106,11 +106,10 @@ public class DisasterGenerator : MonoBehaviour
 
     	UI_disaster_message.text = message;
     	UI_disaster_consequence.text = consequence;
+    }
 
-
-
-
-
+    void createRegularDisaster(string message){
+    	
     }
 
     void Start()
