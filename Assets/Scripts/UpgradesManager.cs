@@ -85,10 +85,7 @@ public class UpgradesManager : MonoBehaviour
     public ResourcesRequired GetResourcesRequiredGold() { return gold_lvlup_requirements[gold_lvl+1]; }
     public ResourcesRequired GetResourcesRequiredDiamond() { return diamond_lvlup_requirements[diamond_lvl+1]; }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        resource_generator = gameObject.GetComponent<ResourceGenerator>();
+    private void SetGeneratorsLvlUpRequirements() {
 
         carbon_lvlup_requirements = new Dictionary<int, ResourcesRequired>()
         {
@@ -153,6 +150,109 @@ public class UpgradesManager : MonoBehaviour
                 diamond = 30
             }}
         };
+
+        silver_lvlup_requirements = new Dictionary<int, ResourcesRequired>()
+        {
+            {2 , new ResourcesRequired {
+                carbon = 60,
+                iron = 35,
+                silver = 30,
+                gold = 0,
+                diamond = 0
+            }},
+            {3 , new ResourcesRequired {
+                carbon = 170,
+                iron = 140,
+                silver = 115,
+                gold = 30,
+                diamond = 0
+            }},
+            {4 , new ResourcesRequired {
+                carbon = 300,
+                iron = 280,
+                silver = 240,
+                gold = 90,
+                diamond = 10
+            }},
+            {5 , new ResourcesRequired {
+                carbon = 450,
+                iron = 380,
+                silver = 310,
+                gold = 120,
+                diamond = 50
+            }}
+        };
+
+        gold_lvlup_requirements = new Dictionary<int, ResourcesRequired>()
+        {
+            {2 , new ResourcesRequired {
+                carbon = 90,
+                iron = 65,
+                silver = 60,
+                gold = 10,
+                diamond = 0
+            }},
+            {3 , new ResourcesRequired {
+                carbon = 220,
+                iron = 180,
+                silver = 155,
+                gold = 60,
+                diamond = 10
+            }},
+            {4 , new ResourcesRequired {
+                carbon = 370,
+                iron = 330,
+                silver = 280,
+                gold = 110,
+                diamond = 40
+            }},
+            {5 , new ResourcesRequired {
+                carbon = 450,
+                iron = 380,
+                silver = 310,
+                gold = 120,
+                diamond = 70
+            }}
+        };
+
+        diamond_lvlup_requirements = new Dictionary<int, ResourcesRequired>()
+        {
+            {2 , new ResourcesRequired {
+                carbon = 150,
+                iron = 125,
+                silver = 90,
+                gold = 60,
+                diamond = 10
+            }},
+            {3 , new ResourcesRequired {
+                carbon = 280,
+                iron = 260,
+                silver = 220,
+                gold = 140,
+                diamond = 70
+            }},
+            {4 , new ResourcesRequired {
+                carbon = 400,
+                iron = 370,
+                silver = 320,
+                gold = 210,
+                diamond = 120
+            }},
+            {5 , new ResourcesRequired {
+                carbon = 500,
+                iron = 500,
+                silver = 500,
+                gold = 500,
+                diamond = 200
+            }}
+        };
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        resource_generator = gameObject.GetComponent<ResourceGenerator>();
+        SetGeneratorsLvlUpRequirements();
     }
 
     // Object that contains the resources required to upgrade something
