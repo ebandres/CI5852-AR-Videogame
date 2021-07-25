@@ -10,7 +10,7 @@ public class PlanetLvl : MonoBehaviour
     public int planetLevel = 0;
 
     // Make sure the amount of levels is equal or higher than r.levels.Length in the inspector (check JSON)
-    public int[] levels = new int[] { 1000, 10000, 100000, 250000, 500000, 750000, 1000000 };
+    public int[] levels = new int[] { 10000, 100000, 250000, 500000, 750000, 1000000, 1500000 };
     private MapGenerator mg;
     private RegionLevels rl;
 
@@ -21,8 +21,6 @@ public class PlanetLvl : MonoBehaviour
         rl = JsonUtility.FromJson<RegionLevels>(planetJson.text);
         mg.regions = rl.levels[0].regions;
         mg.GenerateMap();
-
-        planetHumanity.SetHumanity(0);
 
     }
 
