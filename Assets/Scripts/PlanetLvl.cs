@@ -6,12 +6,13 @@ public class PlanetLvl : MonoBehaviour
 {
     public HumanityManager planetHumanity;
     public TextAsset planetJson;
+    public ParticleSystem particles;
     public int planetLevel = 0;
-    public int[] levels = new int[] {100, 1000, 10000};
+
+    // Make sure the amount of levels is equal or higher than r.levels.Length in the inspector (check JSON)
+    public int[] levels = new int[] { 1000, 10000, 100000, 250000, 500000, 750000, 1000000 };
     private MapGenerator mg;
     private RegionLevels rl;
-    public float tt = 0f;
-    public int curr_lvl = 0;
 
     void Start()
     {
@@ -19,19 +20,20 @@ public class PlanetLvl : MonoBehaviour
 
         rl = JsonUtility.FromJson<RegionLevels>(planetJson.text);
         mg.regions = rl.levels[0].regions;
+        mg.GenerateMap();
+
+        planetHumanity.SetHumanity(0);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (curr_lvl < rl.levels.Length - 1)
+        if (planetLevel < rl.levels.Length - 1 && planetHumanity.GetHumanity() > levels[planetLevel])
         {
-            tt += Time.deltaTime;
-            if (tt >= 5f) {
-                tt = 0f;
-                curr_lvl += 1;
-                changePlanetLevel(curr_lvl);
-            }
+            planetLevel += 1;
+            changePlanetLevel(planetLevel);
+            particles.Play();
         }
     }
 
