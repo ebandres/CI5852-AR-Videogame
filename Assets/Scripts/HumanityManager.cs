@@ -11,6 +11,7 @@ public class HumanityManager : MonoBehaviour
     public double humans_prob = 0.50;
     public Text UI_humanity_value;
     // Private variables
+    [SerializeField]
     private int humans = 1000;
     private int humans_limit = 1000;
 
@@ -22,16 +23,9 @@ public class HumanityManager : MonoBehaviour
     public void SetHumanity(int h) { humans = h; UI_humanity_value.text = humans.ToString(); }
     public void SetHumanityLimit(int h) { humans_limit = h; }
 
-    void HumanFixedChange(int delta){
-        if (humans + delta >= 0){
-            humans = humans + delta;
-        } else {
-            humans = 0;
-        }
-    }
 
-    void HumanPercentageChange(int percentage){
-        HumanFixedChange(System.Convert.ToInt32(humans * percentage / 100));
+    public void HumanPercentageDecrease(int percentage){
+        SetHumanity(humans - (int)(humans*((float)percentage/100)));
     }
 
 

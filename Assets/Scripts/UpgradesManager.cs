@@ -32,31 +32,46 @@ public class UpgradesManager : MonoBehaviour
     public int GetDiamondLvl() { return diamond_lvl; }
 
     // Setters
-    public void SetCarbonLvl(int c) { 
+    public void SetCarbonLvl(int c) {
+        if (c <= 0) { c = 1; } 
+        else if (c >= 6) { c = 5; }
+
         carbon_lvl = c;
         resource_generator.SetCarbonGenLimiter(carbon_lvl);
         resource_generator.carbon_prob += (double)(0.75-0.30)/4; // 0.1125
         UI_carbon_lvl_value.text = carbon_lvl.ToString();
     }
     public void SetIronLvl(int i) { 
+        if (i <= 0) { i = 1; } 
+        else if (i >= 6) { i = 5; }
+
         iron_lvl = i; 
         resource_generator.SetIronGenLimiter(iron_lvl);
         resource_generator.iron_prob += (double)(0.50-0.20)/4; // 0.075
         UI_iron_lvl_value.text = iron_lvl.ToString();
     }
-    public void SetSilverLvl(int s) { 
+    public void SetSilverLvl(int s) {
+        if (s <= 0) { s = 1; } 
+        else if (s >= 6) { s = 5; }
+
         silver_lvl = s; 
         resource_generator.SetSilverGenLimiter(silver_lvl);
         resource_generator.silver_prob += (double)(0.37-0.12)/4; // 0.063
         UI_silver_lvl_value.text = silver_lvl.ToString();
     }
-    public void SetGoldLvl(int g) { 
+    public void SetGoldLvl(int g) {
+        if (g <= 0) { g = 1; } 
+        else if (g >= 6) { g = 5; }
+
         gold_lvl = g; 
         resource_generator.SetGoldGenLimiter(gold_lvl);
         resource_generator.gold_prob += (double)(0.25-0.10)/4; // 0.0376
         UI_gold_lvl_value.text = gold_lvl.ToString();
     }
-    public void SetDiamondLvl(int d) { 
+    public void SetDiamondLvl(int d) {
+        if (d <= 0) { d = 1; } 
+        else if (d >= 6) { d = 5; }
+
         diamond_lvl = d; 
         resource_generator.SetDiamondGenLimiter(diamond_lvl);
         resource_generator.diamond_prob += (double)(0.12-0.05)/4; // 0.018
