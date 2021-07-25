@@ -27,7 +27,6 @@ public class MapGenerator : MonoBehaviour
     public float cloudSpeed = 0.0001f;
 
     public bool autoUpdate;
-    public bool loadFromJson;
 
     public TerrainType[] regions;
 

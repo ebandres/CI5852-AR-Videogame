@@ -12,7 +12,7 @@ public class Starfield : MonoBehaviour
         for (int i = 0; i < starAmount; i++)
         {
             Vector3 randomPoint = Random.insideUnitSphere * 10 - new Vector3(20f, 0, 0);
-            randomPoint.z = 3f;
+            randomPoint.z = 30f;
             GameObject star = Instantiate(Resources.Load("Prefabs/star", typeof(GameObject)), randomPoint, Quaternion.identity) as GameObject;
             star.transform.parent = gameObject.transform;
         }
