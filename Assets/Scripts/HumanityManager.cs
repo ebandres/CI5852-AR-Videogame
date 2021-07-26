@@ -11,17 +11,17 @@ public class HumanityManager : MonoBehaviour
     public double humans_prob = 0.50;
     public Text UI_humanity_value;
     // Private variables
-    [SerializeField]
     private int humans = 1000;
-    private int humans_limit = 1000;
+    [SerializeField]
+    private ulong humans_limit = 1000;
 
     // Getters
     public int GetHumanity() { return humans; }
-    public int GetHumanityLimit() { return humans_limit; }
+    public ulong GetHumanityLimit() { return humans_limit; }
 
     // Setters
     public void SetHumanity(int h) { humans = h; UI_humanity_value.text = humans.ToString(); }
-    public void SetHumanityLimit(int h) { humans_limit = h; }
+    public void SetHumanityLimit(ulong h) { humans_limit = h; }
 
 
     public void HumanPercentageDecrease(int percentage){
@@ -39,7 +39,7 @@ public class HumanityManager : MonoBehaviour
         System.Random random = new System.Random();
         while (true){
             double resource = random.NextDouble();
-            if (nothing_prob < resource && humans_limit > humans){
+            if (nothing_prob < resource && humans_limit > (ulong)humans){
                 if (resource <= humans_prob){
                     humans += random.Next(20);
                     UI_humanity_value.text = humans.ToString();
