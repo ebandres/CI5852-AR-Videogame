@@ -33,6 +33,11 @@ public class ResourceGenerator : MonoBehaviour
     private UpgradesManager upgrades_manager;
 
     // Getters
+    public int GetCarbonStored() { return carbon; }
+    public int GetIronStored() { return iron; }
+    public int GetSilverStored() { return silver; }
+    public int GetGoldStored() { return gold; }
+    public int GetDiamondStored() { return diamond; }
     public int GetCarbonGenLimiter() { return carbon_generator_limiter; }
     public int GetIronGenLimiter() { return iron_generator_limiter; }
     public int GetSilverGenLimiter() { return silver_generator_limiter; }
@@ -40,6 +45,11 @@ public class ResourceGenerator : MonoBehaviour
     public int GetDiamondGenLimiter() { return diamond_generator_limiter; }
 
     // Setters
+    public void SetCarbonStored(int c) { carbon = c; UI_carbon_value.text = carbon.ToString(); }
+    public void SetIronStored(int i) { iron = i; UI_iron_value.text = iron.ToString(); }
+    public void SetSilverStored(int s) { silver = s; UI_silver_value.text = silver.ToString(); }
+    public void SetGoldStored(int g) { gold = g; UI_gold_value.text = gold.ToString(); }
+    public void SetDiamondStored(int d) { diamond = d; UI_diamond_value.text = diamond.ToString(); }
     public void SetCarbonGenLimiter(int c) { carbon_generator_limiter = c; }
     public void SetIronGenLimiter(int i) { iron_generator_limiter = i; }
     public void SetSilverGenLimiter(int s) { silver_generator_limiter = s; }

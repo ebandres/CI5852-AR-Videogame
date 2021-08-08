@@ -37,17 +37,22 @@ public class DisasterGenerator : MonoBehaviour
 		"Cthulhu ha despertado",
 		"Guerra multiversal"
 	};
+	[SerializeField]
 	private UpgradesManager upgrades_manager;
+	[SerializeField]
 	private HumanityManager humanity_manager;
+	private int regularCounter = 0;
 
 	public bool aniquiladoresHabilitated = false;
-	public int startDisastersIn = 240;
 	public int ProbOfDisasterTime = 60;
 	public double regularHumanityDecreaseProbability = 0.30;
 	public double regularDistasterProbability = 0.20;
 	public double AnihilationDistasterProbability = 0.05;
 	public Text UI_disaster_message;
 	public Text UI_disaster_consequence; 
+
+	public int GetRegularCounter() { return regularCounter; }
+	public void SetRegularCounter(int c) { regularCounter = c; }
 
     private void CreateRegularDisaster(string message){
     	int p_effect, resource;
@@ -147,17 +152,13 @@ public class DisasterGenerator : MonoBehaviour
 
     void Start()
     {
-		upgrades_manager = gameObject.GetComponent<UpgradesManager>();
-		humanity_manager = gameObject.GetComponent<HumanityManager>();
         StartCoroutine("DisasterCoroutine");
     }
 
     IEnumerator DisasterCoroutine(){
     	System.Random random = new System.Random();
-    	int regularCounter, index;
+    	int index;
 		double regular_disaster, anihilation_disaster;
-    	regularCounter = 0;
-    	yield return new WaitForSeconds(startDisastersIn);
 
     	while (true){
 
@@ -176,7 +177,7 @@ public class DisasterGenerator : MonoBehaviour
 				regularCounter = 0;
     		}
 
-    		if (regularCounter == 12){
+    		if (regularCounter >= 12){
     			aniquiladoresHabilitated = true;
     		}
 

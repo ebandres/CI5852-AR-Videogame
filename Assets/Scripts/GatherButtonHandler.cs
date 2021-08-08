@@ -22,5 +22,6 @@ public class GatherButtonHandler : MonoBehaviour
         game_handler.SetSilver(game_handler.GetSilver() + planet_generator.GatherSilver());
         game_handler.SetGold(game_handler.GetGold() + planet_generator.GatherGold());
         game_handler.SetDiamond(game_handler.GetDiamond() + planet_generator.GatherDiamond());
+        game_handler.Save();
     }
 }

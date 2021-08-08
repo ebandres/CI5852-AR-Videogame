@@ -28,7 +28,9 @@ public class UpgradesManager : MonoBehaviour
     private Dictionary<int, ResourcesRequired> upgrade4_lvlup_requirements;
     private Dictionary<int, ResourcesRequired> upgrade5_lvlup_requirements;
     private Dictionary<int, ResourcesRequired> upgrade6_lvlup_requirements;
+    [SerializeField]
     private ResourceGenerator resource_generator;
+    [SerializeField]
     private HumanityManager humanity_manager;
     // Public variables
     public Text UI_carbon_lvl_value;
@@ -562,8 +564,6 @@ public class UpgradesManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        resource_generator = gameObject.GetComponent<ResourceGenerator>();
-        humanity_manager = gameObject.GetComponent<HumanityManager>();
         SetGeneratorsLvlUpRequirements();
         SetPlanetUpgradesLvlUpRequirements();
     }
