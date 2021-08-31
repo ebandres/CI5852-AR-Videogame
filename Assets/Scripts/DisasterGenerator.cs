@@ -1,49 +1,20 @@
-﻿using System.Collections;
+﻿using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DisasterGenerator : MonoBehaviour
 {
-	private string[] regularDisasters = {
-		"Pequeño desastre genérico",
-		"Paro de trabajadores",
-		"Ha ocurrido un terremoto",
-		"Ha ocurrido un Tsunami",
-		"Temprada de huracanes",
-		"El emperador Zurg I ataca el planeta",
-		"Una pandemia ataca a la población. Quédate en casa",
-		"Los piratas de KNUT4 invaden el planeta",
-		"Incendios se esparcen por el planeta",
-		"La maldición de la momia se desata sobre tu planeta",
-		"Colapso del sistema financiero",
-		"No está lloviendo en el Guri",
-		"Lluvias torrenciales",
-		"Ataque de dragones. Ciudades en llamas",
-		"Los skrull invaden el planeta",
-		"Ataque de los vampiros",
-		"La pelea entre Superman y Zod destruye ciudades enteras",
-		"Gran desastre genérico"
-	};
-
-	private string[] aniquiladores = {
-		"Thanos ha reunido las gemas del infinito",
-		"El emperador Palpatine le ha declarado guerra a tu galaxia",
-		"Un gran astedoride choca con el planeta",
-		"Guerra mundial",
-		"La línea de tiempo ha colapsado",
-		"Invasión zombie",
-		"Las ardillas toman el control del planeta",
-		"Cthulhu ha despertado",
-		"Guerra multiversal"
-	};
+	private DisasterTextObject disaster_text_obj;
+	// Private variables
 	[SerializeField]
 	private UpgradesManager upgrades_manager;
 	[SerializeField]
 	private HumanityManager humanity_manager;
 	private int regularCounter = 0;
-
-	public bool aniquiladoresHabilitated = false;
+	// Public variables
+	public bool annihilatorsHabilitated = false;
 	public int ProbOfDisasterTime = 60;
 	public double regularHumanityDecreaseProbability = 0.30;
 	public double regularDistasterProbability = 0.20;
@@ -152,6 +123,15 @@ public class DisasterGenerator : MonoBehaviour
 
     void Start()
     {
+		string m_path = Application.dataPath;
+		// For now, it's the only language available, if we want to have more we will need to add an option
+		// so that the user selects the language and the program searchs for the correct language file.
+		if (File.Exists(m_path + "/Resources/Disaster Text/es-ve.json")) {
+			// Read from Json file
+            string disaster_text_str = File.ReadAllText(m_path + "/Resources/Disaster Text/es-ve.json");
+            // From Json to DisasterTextObject
+            disaster_text_obj = JsonUtility.FromJson<DisasterTextObject>(disaster_text_str);
+		}
         StartCoroutine("DisasterCoroutine");
     }
 
@@ -166,23 +146,29 @@ public class DisasterGenerator : MonoBehaviour
 			anihilation_disaster = random.NextDouble();
 
     		if (regular_disaster <= regularDistasterProbability){
-    			index = random.Next(regularDisasters.Length);
-    			CreateRegularDisaster(regularDisasters[index]);
+    			index = random.Next(disaster_text_obj.regular.Length);
+    			CreateRegularDisaster(disaster_text_obj.regular[index]);
     			regularCounter++;
     		} 
-			else if (aniquiladoresHabilitated && anihilation_disaster <= AnihilationDistasterProbability) {
-    			index = random.Next(aniquiladores.Length);
-    			CreateAniquilador(aniquiladores[index]);
-    			aniquiladoresHabilitated = false;
+			else if (annihilatorsHabilitated && anihilation_disaster <= AnihilationDistasterProbability) {
+    			index = random.Next(disaster_text_obj.annihilator.Length);
+    			CreateAniquilador(disaster_text_obj.annihilator[index]);
+    			annihilatorsHabilitated = false;
 				regularCounter = 0;
     		}
 
     		if (regularCounter >= 12){
-    			aniquiladoresHabilitated = true;
+    			annihilatorsHabilitated = true;
     		}
 
     		yield return new WaitForSeconds(ProbOfDisasterTime);
     	}	
 
     }
+
+	// Object that contains disasters text data
+	private class DisasterTextObject {
+		public string[] regular;
+		public string[] annihilator;
+	}
 }

@@ -4,23 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameHandler : MonoBehaviour
+public class SaveHandler : MonoBehaviour
 {   
     // Public variables
     public float save_every_second = 5;
-    public Text UI_carbon_value;
-    public Text UI_iron_value;
-    public Text UI_silver_value;
-    public Text UI_gold_value;
-    public Text UI_diamond_value;
     public GameObject planet1;
     public GameObject planet2;
     // Private variables
-    private int carbon = 0;
-    private int iron = 0;
-    private int silver = 0;
-    private int gold = 0;
-    private int diamond = 0;
+    private ResourcesGatheredManager resources_gathered_manager;
     private HumanityManager humanity_manager_planet1;
     private HumanityManager humanity_manager_planet2;
     private UpgradesManager upgrade_manager_planet1;
@@ -30,23 +21,10 @@ public class GameHandler : MonoBehaviour
     private ResourceGenerator resource_generator_planet1;
     private ResourceGenerator resource_generator_planet2;
 
-    // Getters
-    public int GetCarbon() { return carbon; }
-    public int GetIron() { return iron; }
-    public int GetSilver() { return silver; }
-    public int GetGold() { return gold; }
-    public int GetDiamond() { return diamond; }
-
-    // Setters
-    public void SetCarbon(int c) { carbon = c; UI_carbon_value.text = carbon.ToString(); }
-    public void SetIron(int i) { iron = i; UI_iron_value.text = iron.ToString(); }
-    public void SetSilver(int s) { silver = s; UI_silver_value.text = silver.ToString(); }
-    public void SetGold(int g) { gold = g; UI_gold_value.text = gold.ToString(); }
-    public void SetDiamond(int d) { diamond = d; UI_diamond_value.text = diamond.ToString(); }
-
     // Start is called before the first frame update
     void Start() 
     {
+        resources_gathered_manager = gameObject.GetComponent<ResourcesGatheredManager>();
         humanity_manager_planet1 = planet1.GetComponent<HumanityManager>();
         humanity_manager_planet2 = planet2.GetComponent<HumanityManager>();
         upgrade_manager_planet1 = planet1.GetComponent<UpgradesManager>();
@@ -71,11 +49,11 @@ public class GameHandler : MonoBehaviour
     public void Save() {
         //Create SaveObject with game state data
         SaveObject save_object = new SaveObject {
-            carbon = carbon,
-            iron = iron,
-            silver = silver,
-            gold = gold,
-            diamond = diamond,
+            carbon = resources_gathered_manager.GetCarbon(),
+            iron = resources_gathered_manager.GetIron(),
+            silver = resources_gathered_manager.GetSilver(),
+            gold = resources_gathered_manager.GetGold(),
+            diamond = resources_gathered_manager.GetDiamond(),
             humans_planet_1 = humanity_manager_planet1.GetHumanity(),
             humans_limit_planet_1 = humanity_manager_planet1.GetHumanityLimit(),
             humans_planet_2 = humanity_manager_planet1.GetHumanity(),
@@ -131,11 +109,11 @@ public class GameHandler : MonoBehaviour
             // From Json to SaveObject
             SaveObject save_object = JsonUtility.FromJson<SaveObject>(save_str);
             // Set game state
-            SetCarbon(save_object.carbon);
-            SetIron(save_object.iron);
-            SetSilver(save_object.silver);
-            SetGold(save_object.gold);
-            SetDiamond(save_object.diamond);
+            resources_gathered_manager.SetCarbon(save_object.carbon);
+            resources_gathered_manager.SetIron(save_object.iron);
+            resources_gathered_manager.SetSilver(save_object.silver);
+            resources_gathered_manager.SetGold(save_object.gold);
+            resources_gathered_manager.SetDiamond(save_object.diamond);
             humanity_manager_planet1.SetHumanity(save_object.humans_planet_1);
             humanity_manager_planet1.SetHumanityLimit(save_object.humans_limit_planet_1);
             humanity_manager_planet2.SetHumanity(save_object.humans_planet_2);

@@ -22,13 +22,8 @@ public class Planet : MonoBehaviour
         direction = Random.insideUnitSphere.normalized;
 
         // Get gameObject that will be clamped with the menu HUD        
-        if (gameObject.tag == "Cloud") {
-            menu = GameObject.Find(gameObject.transform.parent.gameObject.name + " Menu").GetComponent<ClampPlanetMenu>().menu_hud.gameObject;
-        }
-        else {
-            menu = GameObject.Find(gameObject.name + " Menu").GetComponent<ClampPlanetMenu>().menu_hud.gameObject;
-            vis_manager = GetComponent<VisibilityManager>();
-        }
+        menu = GameObject.Find(gameObject.name + " Menu").GetComponent<ClampPlanetMenu>().menu_hud.gameObject;
+        vis_manager = GetComponent<VisibilityManager>();
         // Hide menu HUD when starting game
         menu.SetActive(false);
     }
@@ -56,11 +51,9 @@ public class Planet : MonoBehaviour
             }
         }
 
-        if (gameObject.tag != "Cloud") {
-            // If planet gets despawned and the menu was active, we hide its menu
-            if (!vis_manager.GetSpawned() && menu.activeSelf) {
-                menu.SetActive(false);
-            }
+        // If planet gets despawned and the menu was active, we hide its menu
+        if (!vis_manager.GetSpawned() && menu.activeSelf) {
+            menu.SetActive(false);
         }
     }
 

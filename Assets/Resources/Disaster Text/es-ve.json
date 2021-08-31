@@ -1,0 +1,33 @@
+{
+    "regular": [
+        "Pequeño desastre genérico",
+		"Paro de trabajadores",
+		"Ha ocurrido un terremoto",
+		"Ha ocurrido un Tsunami",
+		"Temprada de huracanes",
+		"El emperador Zurg I ataca el planeta",
+		"Una pandemia ataca a la población. Quédate en casa",
+		"Los piratas de KNUT4 invaden el planeta",
+		"Incendios se esparcen por el planeta",
+		"La maldición de la momia se desata sobre tu planeta",
+		"Colapso del sistema financiero",
+		"No está lloviendo en el Guri",
+		"Lluvias torrenciales",
+		"Ataque de dragones. Ciudades en llamas",
+		"Los skrull invaden el planeta",
+		"Ataque de los vampiros",
+		"La pelea entre Superman y Zod destruye ciudades enteras",
+		"Gran desastre genérico"
+    ],
+    "annihilator": [
+        "Thanos ha reunido las gemas del infinito",
+		"El emperador Palpatine le ha declarado guerra a tu galaxia",
+		"Un gran astedoride choca con el planeta",
+		"Guerra mundial",
+		"La línea de tiempo ha colapsado",
+		"Invasión zombie",
+		"Las ardillas toman el control del planeta",
+		"Cthulhu ha despertado",
+		"Guerra multiversal"
+    ]
+}

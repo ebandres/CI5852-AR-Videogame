@@ -15,13 +15,14 @@ public class GatherButtonHandler : MonoBehaviour
     public void GatherResources() 
     {
         ResourceGenerator planet_generator = planet.GetComponent<ResourceGenerator>();
-        GameHandler game_handler = gh.GetComponent<GameHandler>();
+        ResourcesGatheredManager game_handler_resource_gathered = gh.GetComponent<ResourcesGatheredManager>();
+        SaveHandler game_handler_save = gh.GetComponent<SaveHandler>();
 
-        game_handler.SetCarbon(game_handler.GetCarbon() + planet_generator.GatherCarbon());
-        game_handler.SetIron(game_handler.GetIron() + planet_generator.GatherIron());
-        game_handler.SetSilver(game_handler.GetSilver() + planet_generator.GatherSilver());
-        game_handler.SetGold(game_handler.GetGold() + planet_generator.GatherGold());
-        game_handler.SetDiamond(game_handler.GetDiamond() + planet_generator.GatherDiamond());
-        game_handler.Save();
+        game_handler_resource_gathered.SetCarbon(game_handler_resource_gathered.GetCarbon() + planet_generator.GatherCarbon());
+        game_handler_resource_gathered.SetIron(game_handler_resource_gathered.GetIron() + planet_generator.GatherIron());
+        game_handler_resource_gathered.SetSilver(game_handler_resource_gathered.GetSilver() + planet_generator.GatherSilver());
+        game_handler_resource_gathered.SetGold(game_handler_resource_gathered.GetGold() + planet_generator.GatherGold());
+        game_handler_resource_gathered.SetDiamond(game_handler_resource_gathered.GetDiamond() + planet_generator.GatherDiamond());
+        game_handler_save.Save();
     }
 }
